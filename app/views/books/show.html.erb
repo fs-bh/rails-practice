@@ -1,0 +1,15 @@
+<h1><%= @book.title %></h1>
+<h2>Authors:</h2>
+<ul>
+	<% @book.authors.each do |author| %>
+		<li>
+			<%= author.name %> (b. <%= author.birth_year %>)
+			<%#= button_to 'Remove author',  %>
+		</li>
+	<% end %>
+
+	<p><%= form_for @book do |f| %>
+        <%= f.collection_select :authors, Author.all, :id, :name %>
+		<%= f.submit 'Add author to this book' %>
+	<% end %></p>
+</ul>
