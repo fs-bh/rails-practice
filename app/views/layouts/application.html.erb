@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsIsFun</title>
+    <title>Rails Is Fun</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,19 @@
   </head>
 
   <body>
+
+    <nav>
+      <ol>
+        <li>
+          <a href="/authors">Authors Index</a>
+        </li>
+        <li>
+          <a href="/books">Books Index</a>
+        </li>
+      </ol>
+      <hr>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

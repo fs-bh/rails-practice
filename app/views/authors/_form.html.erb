@@ -1,0 +1,8 @@
+<%= form_for @author do |f| %>
+    <li><%= f.label :name %>
+    <%= f.text_field :name %></li>
+    <li><%= f.label :birth_year %>			
+    <%= f.number_field :birth_year %></li>
+    <li><%= f.submit %></li>
+<% end %>
+
