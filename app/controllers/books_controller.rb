@@ -4,13 +4,22 @@ class BooksController < ApplicationController
 	end
 	def show
 		@book = get_instance
-		@authors = Author.all
+		# @authors = Author.all
+		@authors = available_authors_to_add
 	end
 	def update
-		# TODO: Add validation before (or during?) running the update.
 		book = get_instance
-		book.authors << Author.find(params[:book][:authors])
-		redirect_to book
+		# NOTE: this validation logic "works" but offers no user
+		#		feedback, and also doesn't leverage the validation
+		#		that exists in the model. The validation in the model
+		#		works, but we are unsure how to catch that error
+		#		properly in order to redirect.
+		if book.authors.include?(Author.find(params[:book][:authors]))
+			redirect_to book
+		else
+			book.authors << Author.find(params[:book][:authors])
+			redirect_to book
+		end
 	end
 	def destroy
 		book = get_instance
@@ -26,6 +35,9 @@ class BooksController < ApplicationController
 	# end
 	def get_instance
 		Book.find(params[:id])
+	end
+	def available_authors_to_add
+		Author.all - @book.authors
 	end
 end
 

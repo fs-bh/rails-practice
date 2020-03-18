@@ -14,7 +14,7 @@
 	<% end %>
 
 	<p><%= form_for @book do |f| %>
-        <%= f.collection_select :authors, Author.all, :id, :name %>
+        <%= f.collection_select :authors, @authors, :id, :name %>
 		<%= f.submit 'Add author to this book' %>
 	<% end %></p>
 </ul>
