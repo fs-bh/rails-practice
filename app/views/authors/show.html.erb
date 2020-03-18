@@ -10,5 +10,7 @@
 <% end %>
 </ul>
 
+<%= button_to 'Delete Author', author_path(@author), :method => :delete %><br />
+
 <%= link_to 'Edit Author Details', edit_author_path(@author) %><br />
 <%= link_to 'Return to All Authors', authors_path %>

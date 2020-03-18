@@ -25,6 +25,10 @@ class AuthorsController < ApplicationController
 		author.update(strong_params(:name, :birth_year))
 		redirect_to author
 	end
+	def destroy
+		get_instance.destroy
+		redirect_to authors_path
+	end
 
 	private
 

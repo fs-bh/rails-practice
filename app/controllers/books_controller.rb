@@ -12,12 +12,18 @@ class BooksController < ApplicationController
 		book.authors << Author.find(params[:book][:authors])
 		redirect_to book
 	end
+	def destroy
+		book = get_instance
+		book.authors.delete(params[:author_id])
+		redirect_to book
+	end
 	
 	private
 	
-	def strong_params(*args)
-		params.require(:book).permit(*args)
-	end
+	# not using this currently
+	# def strong_params(*args)
+	# 	params.require(:book).permit(*args)
+	# end
 	def get_instance
 		Book.find(params[:id])
 	end

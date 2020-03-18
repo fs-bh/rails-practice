@@ -4,7 +4,12 @@
 	<% @book.authors.each do |author| %>
 		<li>
 			<%= author.name %> (b. <%= author.birth_year %>)
-			<%#= button_to 'Remove author',  %>
+			<%= button_to 'Remove author', {
+				:controller => 'books',
+				:action		=> 'destroy',
+				:author_id 	=> author.id
+			},
+			:method => :delete %>
 		</li>
 	<% end %>
 
